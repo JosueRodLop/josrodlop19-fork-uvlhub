@@ -1,0 +1,10 @@
+#!/bin/bash
+# Leemos el mensaje del commit desde el archivo temporal que
+Git genera
+mensaje_commit=$(cat "$1")
+# Verificamos si el mensaje de commit cumple con el formato
+if ! [[ "$mensaje_commit" =~ ^(feat|fix|chore): ]]; then
+echo "ERROR: El mensaje del commit debe comenzar con uno
+de los siguientes prefijos: feat:, fix:, chore:"
+exit 1 # Evitar el commit si el formato es incorrecto
+fi
